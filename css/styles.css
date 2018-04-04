@@ -1,0 +1,58 @@
+/*
+font-family: 'Poiret One', cursive;
+font-family: 'Gaegu', cursive;
+font-family: 'Russo One', sans-serif;
+font-family: 'Cookie', cursive;
+font-family: 'Black Han Sans', sans-serif;
+font-family: 'Cute Font', cursive;
+*/
+
+.padBox {
+  padding-top: 5%;
+}
+
+
+.pageParent {
+  width: 100%,
+  height: 100%;
+  padding: 1%;
+
+}
+
+.centeredGrey {
+  margin: 0 auto;
+  text-align: center;
+  background-color: lightgrey;
+}
+
+.centeredGrey h1 {
+  font-family: 'Black Han Sans', sans-serif;
+8
+}
+
+.centeredGrey h2 {
+  color: darkgrey;
+  font-family: 'Cookie', cursive;
+
+}
+
+#countrySelect {
+  font-family: 'Gaegu', cursive;
+}
+
+#output {
+  background-color: white;
+  font-family: 'Russo One', sans-serif;
+}
+
+
+#tempOut {
+  font-family: 'Russo One', sans-serif;
+  color: red;
+}
+
+#smartSelect {
+  background-size: cover;
+  width: 100%;
+  height: 300px;
+}
