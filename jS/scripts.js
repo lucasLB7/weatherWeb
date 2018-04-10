@@ -24,7 +24,7 @@ $(document).ready(function() {
 
      $.ajax({
       method: 'GET',
-      url: 'https://api.openweathermap.org/data/2.5/weather?q='+ city +'&mode=json&units=metric&APPID=' + API_KEY,
+      url: 'http://api.openweathermap.org/data/2.5/weather?q='+ city +'&mode=json&units=metric&APPID=' + API_KEY,
       success: function(weather_data) {
         console.log(weather_data);
         var temp = weather_data.main.temp;
