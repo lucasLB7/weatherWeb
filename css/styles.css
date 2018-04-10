@@ -7,23 +7,33 @@ font-family: 'Black Han Sans', sans-serif;
 font-family: 'Cute Font', cursive;
 */
 
-.padBox {
-  padding-top: 5%;
+.parentBox1 {
+  width: 95%;
+}
+
+.paddedRight{
+  padding-right: 5%;
+}
+.paddedLeft{
+  padding-left: 2%;
+}
+
+
+.borderRight{
+  border-right: 2%;
 }
 
 
 .pageParent {
-  width: 100%,
-  height: 100%;
+  background-image: url(../images/bckImg.jpg);
   padding: 1%;
+  border: 2%;
+  border: 3px grey solid;
+  border-radius: 0 0 2% 2%;
 
 }
 
-.centeredGrey {
-  margin: 0 auto;
-  text-align: center;
-  background-color: lightgrey;
-}
+
 
 .centeredGrey h1 {
   font-family: 'Black Han Sans', sans-serif;
@@ -41,18 +51,135 @@ font-family: 'Cute Font', cursive;
 }
 
 #output {
-  background-color: white;
+  background-color: grey;
   font-family: 'Russo One', sans-serif;
+  text-align: center;
 }
+
 
 
 #tempOut {
   font-family: 'Russo One', sans-serif;
-  color: red;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+}
+#humOut {
+  font-family: 'Russo One', sans-serif;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+}
+#precipOut {
+  font-family: 'Russo One', sans-serif;
+  color: white;
+  font-size: 20px;
+  text-align: center;
+}
+.fontSizeSet {
+  font-family: 'Russo One', sans-serif;
+  font-size: 20px;
 }
 
 #smartSelect {
   background-size: cover;
   width: 100%;
   height: 300px;
+}
+
+
+ #weatherGlifficon {
+   background-size: 60px;
+   background-repeat:no-repeat;
+   height: 80px;
+   width: 80px;
+   padding: 1%;
+}
+
+#humiGlifficon {
+  background-size: 60px;
+  background-repeat:no-repeat;
+  height: 80px;
+  width: 80px;
+  padding: 1%;
+}
+
+#precipGlifficon {
+  background-size: 60px;
+  background-repeat:no-repeat;
+  height: 80px;
+  width: 80px;
+  padding: 1%;
+
+}
+.dateTime {
+  background-color: lightgrey;
+  font-size: 22px;
+}
+#loc {
+  float: right;
+}
+
+.smallImage {
+  background-color: grey;
+  width: 40px;
+  height: 40px;
+}
+
+
+
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+
+.noWrap {
+  white-space: nowrap;
+      overflow: hidden;
+text-overflow: ellipsis;
 }
