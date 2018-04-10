@@ -1,59 +1,112 @@
-
+var city = "Nairobi";
 var API_KEY = '3f4fbdb0acde79819ff5264ddb12d12c';
 
+function updateClock() {
+    var now = new Date(), // current date
+        months = ['January', 'February', 'March', 'April','May','June', 'July','August','September', 'October', 'November', 'December']; // you get the idea
+        time = now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds(), // again, you get the idea
 
+
+
+        // a cleaner way than string concatenation
+        date = [now.getDate(),
+                months[now.getMonth()],
+                now.getFullYear()].join(' ');
+
+    // set the content of the element with the ID time to the formatted string
+    document.getElementById('time').innerHTML = [date, time].join(' / ');
+
+    // call this function again in 1000ms
+    setTimeout(updateClock, 1000);
+}
+updateClock(); // initial call
 $(document).ready(function() {
-
-
-  $("#countrySelect").click(function(event) {
-    event.preventDefault();
-    var lockIn = $("#countrySelect").val();
-    console.log(lockIn);
 
      $.ajax({
       method: 'GET',
-      url: 'http://api.openweathermap.org/data/2.5/weather?q=' + lockIn + '&mode=json&units=metric&APPID=' + API_KEY,
+      url: 'http://api.openweathermap.org/data/2.5/weather?q='+ city +'&mode=json&units=metric&APPID=' + API_KEY,
       success: function(weather_data) {
         console.log(weather_data);
         var temp = weather_data.main.temp;
         var hum = weather_data.main.humidity;
+        var precip = weather_data.weather[0].description;
         console.log(temp);
-        logiCon(temp , hum); //We make the local variable applicable to the logiCon function
-        $("#tempOut").html("<h1>"+temp+"</h1>");
+        console.log(precip);
+        logiCon(temp , hum , precip); //We make the local variable applicable to the logiCon function
+        $("#tempOut").html("<h4>"+temp+" °C</h4>");
+        $("#humOut").html("<h4>"+hum+" %</h4>");
+        $("#precipOut").html("<h4>"+precip+"</h4>");
+        $("#loc").html("<h1>Location: " +city+ "</h1>");
       },
 
 
     });
-      $("#output").html("<h3>So you are in: "+lockIn+"!!</h3>");
 
   });
-});
 
-function logiCon (temp , hum){
-  var curTemp = "";
+function logiCon (temp , hum, precip){
+
+
   if(temp < 10) {
     var curTemp = "Cold";
-    $("#smartSelect").html("<h1>Brrrr. It's cold</h1>")
-    $("#smartSelect").append("<h3>Humidity levels: "+hum+"</h>")
-    $("#smartSelect").css("background-image", "url(images/cold.jpg)")
+    $("#weatherGlifficon").css("background-image", "url(images/cold.jpg)");
   }
   else if(temp > 10 && temp < 20 ) {
-    curTemp = "Fair";
-    $("#smartSelect").html("<h1>A good weather to go for a walk..</h1>")
-    $("#smartSelect").append("<h3>Humidity levels: "+hum+"</h>")
-    $("#smartSelect").css("background-image", "url(images/fair.jpg)")
+    var curTemp = "Fair";
+    $("#weatherGlifficon").css("background-image", "url(images/sunny1.png)");
   }
   else if(temp > 20 && temp < 30 ) {
-    curTemp = "Hot";
-    $("#smartSelect").html("<h1>Pffff.. Don't forget a cap & drink lot's of water</h1>")
-    $("#smartSelect").append("<h3>Humidity levels: "+hum+"</h>")
-    $("#smartSelect").css("background-image", "url(images/hot.jpeg)")
+    var curTemp = "Hot";
+    $("#weatherGlifficon").css("background-image", "url(images/sunny1.png)");
   }
-  else if(temp > 30 && temp < 40 ) {
-    curTemp = "scorching";
-    $("#smartSelect").html("<h1>What's that smell?..... Oh yes...... the world in on fire!!!</h1>")
-    $("#smartSelect").append("<h3>Humidity levels: "+hum+"</h>")
-    $("#smartSelect").css("background-image", "url(images/scorched.jpeg)")
-  }
+
   console.log(curTemp)
+
+
+
+  if(precip === "few clouds") {
+    var curFrc = "fewClouds";
+    $("#precipGlifficon").css("background-image", "url(images/light_clouds.png)");
   }
+  else if (precip === "scattered clouds") {
+    var curFrc = "scatteredClouds";
+    $("#precipGlifficon").css("background-image", "url(images/scatteredClouds.png)");
+  }
+  else if (precip === "broken clouds") {
+    var curFrc = "scatteredClouds";
+    $("#precipGlifficon").css("background-image", "url(images/broken_clouds.png)");
+  }
+  else if (precip === "clear sky") {
+    var curFrc = "scatteredClouds";
+    $("#precipGlifficon").css("background-image", "url(images/nature.png)");
+  }
+  else if (precip === "light rain") {
+    var curFrc = "scatteredClouds";
+    $("#precipGlifficon").css("background-image", "url(images/drizzle.png)");
+  }
+  console.log(curFrc);
+
+
+  if(hum < 30) {
+    var curFrc = "dry";
+    $("#humiGlifficon").css("background-image", "url(images/dry.png)");
+  }
+  else if(hum > 29 && hum < 51) {
+    var curFrc = "normal";
+    $("#humiGlifficon").css("background-image", "url(images/normalTemp.png)");
+  }
+
+  else if(hum > 51) {
+    var curFrc = "wet";
+    $("#humiGlifficon").css("background-image", "url(images/wetumbrella.png)");
+  }
+
+  }
+
+  function openNav() {
+    document.getElementById("myNav").style.width = "47%";
+}
+
+function closeNav() {
+    document.getElementById("myNav").style.width = "0%";
+}
