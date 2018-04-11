@@ -24,7 +24,7 @@ $(document).ready(function() {
 
      $.ajax({
       method: 'GET',
-      url: 'http://api.openweathermap.org/data/2.5/weather?q='+ city +'&mode=json&units=metric&APPID=' + API_KEY,
+      url: 'https://api.openweathermap.org/data/2.5/weather?q='+ city +'&mode=json&units=metric&APPID=' + API_KEY,
       success: function(weather_data) {
         console.log(weather_data);
         var temp = weather_data.main.temp;
@@ -53,7 +53,7 @@ function logiCon (temp , hum, precip){
   }
   else if(temp > 10 && temp < 20 ) {
     var curTemp = "Fair";
-    $("#weatherGlifficon").css("background-image", "url(images/sunny1.png)");
+    $("#weatherGlifficon").css("background-image", "url(images/normalTemp.png)");
   }
   else if(temp > 20 && temp < 30 ) {
     var curTemp = "Hot";
