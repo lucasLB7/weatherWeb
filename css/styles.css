@@ -135,5 +135,8 @@ text-overflow: ellipsis;
 
 .myCal {
   display: none;
-  background-color: grey;
+}
+
+.myCal h1 {
+  color: white;
 }

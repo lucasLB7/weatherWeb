@@ -1,4 +1,4 @@
-var city = "Brussels";
+var city = "Nairobi";
 var API_KEY = '3f4fbdb0acde79819ff5264ddb12d12c';
 var openClose =1;
 
