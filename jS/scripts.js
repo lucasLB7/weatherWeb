@@ -1,5 +1,22 @@
-var city = "Nairobi";
+var city = "Brussels";
 var API_KEY = '3f4fbdb0acde79819ff5264ddb12d12c';
+var openClose =1;
+
+function menuClick() {
+  console.log(openClose);
+  if (openClose === 1) {
+    $(".myCal").show();
+    $(".weatherData").hide();
+    openClose = 2;
+  }
+else {
+  $(".myCal").hide();
+  $(".weatherData").show();
+  openClose = 1;
+}
+}
+
+
 
 function updateClock() {
     var now = new Date(), // current date
@@ -49,7 +66,7 @@ function logiCon (temp , hum, precip){
 
   if(temp < 10) {
     var curTemp = "Cold";
-    $("#weatherGlifficon").css("background-image", "url(images/cold.jpg)");
+    $("#weatherGlifficon").css("background-image", "url(images/snowFlacke.png)");
   }
   else if(temp > 10 && temp < 20 ) {
     var curTemp = "Fair";
@@ -84,6 +101,10 @@ function logiCon (temp , hum, precip){
     var curFrc = "scatteredClouds";
     $("#precipGlifficon").css("background-image", "url(images/drizzle.png)");
   }
+  else if (precip === "mist") {
+    var curFrc = "scatteredClouds";
+    $("#precipGlifficon").css("background-image", "url(images/mist.png)");
+  }
   console.log(curFrc);
 
 
@@ -100,13 +121,4 @@ function logiCon (temp , hum, precip){
     var curFrc = "wet";
     $("#humiGlifficon").css("background-image", "url(images/wetumbrella.png)");
   }
-
-  }
-
-  function openNav() {
-    document.getElementById("myNav").style.width = "47%";
-}
-
-function closeNav() {
-    document.getElementById("myNav").style.width = "0%";
 }
